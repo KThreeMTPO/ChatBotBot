@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaspberryPiWebService", "RaspberryPiWebService\RaspberryPiWebService.csproj", "{FC0D8D2B-9BE7-4242-9418-0FEB7BD50049}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AudioTest", "AudioTest\AudioTest.csproj", "{B5D22880-11C0-49FD-96A7-A4C5F849B821}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC0D8D2B-9BE7-4242-9418-0FEB7BD50049}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC0D8D2B-9BE7-4242-9418-0FEB7BD50049}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC0D8D2B-9BE7-4242-9418-0FEB7BD50049}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC0D8D2B-9BE7-4242-9418-0FEB7BD50049}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D22880-11C0-49FD-96A7-A4C5F849B821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D22880-11C0-49FD-96A7-A4C5F849B821}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D22880-11C0-49FD-96A7-A4C5F849B821}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D22880-11C0-49FD-96A7-A4C5F849B821}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4EB63C2-8280-45E0-BC85-AA646FF4C1DF}
+	EndGlobalSection
+EndGlobal

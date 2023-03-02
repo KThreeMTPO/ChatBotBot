@@ -69,6 +69,10 @@ ScaffoldingReadMe.txt
 # StyleCop
 StyleCopReport.xml
 
+#DeepSpeech
+*.pbmm
+*.scorer
+
 # Files built by Visual Studio
 *_i.c
 *_p.c
