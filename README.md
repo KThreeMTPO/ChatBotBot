@@ -7,5 +7,5 @@ Likely to start as a simple conversational device through a raspberry pi, but ma
 
 
 Currently requires 
-Whisper
-DeepSpeech (likely to be removed) but used during initial development / evaluation.
+  Whisper
+  DeepSpeech (likely to be removed) but used during initial development / evaluation.
