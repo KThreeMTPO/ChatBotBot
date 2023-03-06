@@ -8,6 +8,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AudioTest", "AudioTest\AudioTest.csproj", "{B5D22880-11C0-49FD-96A7-A4C5F849B821}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MQTT", "MQTT", "{9BA7D2D1-24FD-456A-8B8E-4A2EDACD5745}"
+	ProjectSection(SolutionItems) = preProject
+		RobotProcessor.cs = RobotProcessor.cs
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MQTTServer", "MQTTServer\MQTTServer.csproj", "{ECD00084-FA26-40D5-8E3C-2311CD230FED}"
 EndProject

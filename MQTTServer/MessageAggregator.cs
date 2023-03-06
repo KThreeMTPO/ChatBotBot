@@ -61,10 +61,15 @@ namespace MQTTServer
                     throw new NotSupportedException($"Unsupported Topic: {topic}");
             }
         }
+        public Dictionary<Topic, IBaseMessage> GetMessagesBetweenTimes(DateTimeOffset start, DateTimeOffset end)
+        {
+            return GetMessagesAroundTime(start, (end - start));
+        }
         public Dictionary<Topic, IBaseMessage> GetMessagesAroundTime(DateTimeOffset time)
         {
             return GetMessagesAroundTime(time, this._windowSize);
         }
+
         public Dictionary<Topic, IBaseMessage> GetMessagesAroundTime(DateTimeOffset time, TimeSpan ts)
         {
             var result = new Dictionary<Topic, IBaseMessage>();

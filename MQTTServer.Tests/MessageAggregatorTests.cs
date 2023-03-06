@@ -38,7 +38,7 @@ namespace MQTTServer.Tests
             // Arrange
             var time = DateTimeOffset.Now;
             var audioMessage = new AudioMessage { Timestamp = time, Data = new byte[] { 1, 2, 3 } };
-            var videoMessage = new VideoMessage { Timestamp = time, Data = new byte[] { 4, 5, 6 } };
+            var videoMessage = new VideoMessage { Timestamp = time, Data = new VideoData(new byte[] { 4, 5, 6 })};
             _messages.Add(audioMessage);
             _messages.Add(videoMessage);
             _aggregator.ProcessMessages(_messages);
@@ -52,7 +52,7 @@ namespace MQTTServer.Tests
             Assert.IsTrue(result.ContainsKey(Topic.Audio));
             Assert.IsTrue(result.ContainsKey(Topic.Video));
             Assert.IsTrue(Enumerable.SequenceEqual(audioMessage.Data, ((AudioMessage)(result[Topic.Audio])).Data));
-            Assert.IsTrue(Enumerable.SequenceEqual(videoMessage.Data, ((VideoMessage)(result[Topic.Video])).Data));
+            Assert.IsTrue(Enumerable.SequenceEqual(videoMessage.Data.FrameData, ((VideoMessage)(result[Topic.Video])).Data.FrameData));
         }
 
         [TestMethod]
@@ -61,7 +61,7 @@ namespace MQTTServer.Tests
             // Arrange
             var time = DateTimeOffset.Now;
             var audioMessage = new AudioMessage { Timestamp = time, Data = new byte[] { 1, 2, 3 } };
-            var videoMessage = new VideoMessage { Timestamp = time.AddHours(-2), Data = new byte[] { 4, 5, 6 } };
+            var videoMessage = new VideoMessage { Timestamp = time.AddHours(-2), Data = new VideoData(new byte[] { 4, 5, 6 }) };
             _messages.Add(audioMessage);
             _messages.Add(videoMessage);
             _aggregator.ProcessMessages(_messages);
@@ -81,7 +81,7 @@ namespace MQTTServer.Tests
             // Arrange
             var time = DateTimeOffset.Now;
             var audioMessage = new AudioMessage { Timestamp = time.AddSeconds(-5), Data = new byte[] { 1, 2, 3 } };
-            var videoMessage = new VideoMessage { Timestamp = time.AddSeconds(-8), Data = new byte[] { 4, 5, 6 } };
+            var videoMessage = new VideoMessage { Timestamp = time.AddSeconds(-8), Data = new VideoData(new byte[] { 4, 5, 6 })};
             _messages.Add(audioMessage);
             _messages.Add(videoMessage);
             _aggregator.ProcessMessages(_messages);
@@ -95,7 +95,7 @@ namespace MQTTServer.Tests
             Assert.IsTrue(result.ContainsKey(Topic.Audio));
             Assert.IsTrue(result.ContainsKey(Topic.Video));
             Assert.IsTrue(Enumerable.SequenceEqual(audioMessage.Data, ((AudioMessage)(result[Topic.Audio])).Data));
-            Assert.IsTrue(Enumerable.SequenceEqual(videoMessage.Data, ((VideoMessage)(result[Topic.Video])).Data));
+            Assert.IsTrue(Enumerable.SequenceEqual(videoMessage.Data.FrameData, ((VideoMessage)(result[Topic.Video])).Data.FrameData));
         }
 
         [TestMethod]
@@ -104,7 +104,7 @@ namespace MQTTServer.Tests
             // Arrange
             var time = DateTimeOffset.Now;
             var audioMessage = new AudioMessage { Timestamp = time.AddSeconds(-20), Data = new byte[] { 1, 2, 3 } };
-            var videoMessage = new VideoMessage { Timestamp = time.AddSeconds(-15), Data = new byte[] { 4, 5, 6 } };
+            var videoMessage = new VideoMessage { Timestamp = time.AddSeconds(-15), Data = new VideoData(new byte[] { 4, 5, 6 }) };
             _messages.Add(audioMessage);
             _messages.Add(videoMessage);
             _aggregator.ProcessMessages(_messages);
@@ -122,9 +122,9 @@ namespace MQTTServer.Tests
             // Arrange
             var time = DateTimeOffset.Now;
             var audioMessageInRange = new AudioMessage { Timestamp = time.AddSeconds(-5), Data = new byte[] { 1, 2, 3 } };
-            var videoMessageInRange = new VideoMessage { Timestamp = time.AddSeconds(-8), Data = new byte[] { 4, 5, 6 } };
+            var videoMessageInRange = new VideoMessage { Timestamp = time.AddSeconds(-8), Data = new VideoData(new byte[] { 4, 5, 6 }) };
             var audioMessageOutOfRange = new AudioMessage { Timestamp = time.AddSeconds(-15), Data = new byte[] { 7, 8, 9 } };
-            var videoMessageOutOfRange = new VideoMessage { Timestamp = time.AddSeconds(-20), Data = new byte[] { 10, 11, 12 } };
+            var videoMessageOutOfRange = new VideoMessage { Timestamp = time.AddSeconds(-20), Data = new VideoData(new byte[] { 10, 11, 12 }) };
             _messages.Add(audioMessageInRange);
             _messages.Add(videoMessageInRange);
             _messages.Add(audioMessageOutOfRange);
@@ -140,7 +140,7 @@ namespace MQTTServer.Tests
             Assert.IsTrue(result.ContainsKey(Topic.Audio));
             Assert.IsTrue(result.ContainsKey(Topic.Video));
             Assert.IsTrue(Enumerable.SequenceEqual(audioMessageInRange.Data, ((AudioMessage)(result[Topic.Audio])).Data));
-            Assert.IsTrue(Enumerable.SequenceEqual(videoMessageInRange.Data, ((VideoMessage)(result[Topic.Video])).Data));
+            Assert.IsTrue(Enumerable.SequenceEqual(videoMessageInRange.Data.FrameData, ((VideoMessage)(result[Topic.Video])).Data.FrameData));
         }
     }
 

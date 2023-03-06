@@ -10,7 +10,6 @@ namespace MQTTServer.Message
     public class AudioMessage : BaseMessage<byte[], AudioMessage>, IBaseMessage
     {
         public override Topic Topic => Topic.Audio;
-
         public override AudioMessage CombineData(IEnumerable<AudioMessage> processSegment)
         {
             using (var ms = new MemoryStream())
