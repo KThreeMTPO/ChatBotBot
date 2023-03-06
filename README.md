@@ -28,10 +28,6 @@ Likely to start as a simple conversational device through a raspberry pi, but ma
     DeepSpeech (to be deprecated) - https://github.com/mozilla/DeepSpeech
 
 
-### Prerequisites: Currently requires 
-    
-DeepSpeech (likely to be removed) but used during initial development / evaluation.
-
 ## AudioTest
     a simple console app that sends audio data to RaspberyPiWebServer, for testing.
     Will be deprecated by the raspberry pi robot code when it becomes a bit more flushed out
