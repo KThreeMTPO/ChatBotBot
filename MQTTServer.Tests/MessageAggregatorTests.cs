@@ -56,6 +56,26 @@ namespace MQTTServer.Tests
         }
 
         [TestMethod]
+        public void GetMessagesAfterExpiry_ReturnsExpectedMessages_WhenMessagesMatchTime()
+        {
+            // Arrange
+            var time = DateTimeOffset.Now;
+            var audioMessage = new AudioMessage { Timestamp = time, Data = new byte[] { 1, 2, 3 } };
+            var videoMessage = new VideoMessage { Timestamp = time.AddHours(-2), Data = new byte[] { 4, 5, 6 } };
+            _messages.Add(audioMessage);
+            _messages.Add(videoMessage);
+            _aggregator.ProcessMessages(_messages);
+
+            // Act
+            var result = _aggregator.GetMessagesAroundTime(time);
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Count);
+            Assert.AreEqual(3, (result[Topic.Audio] as AudioMessage).Data.Length);
+        }
+
+        [TestMethod]
         public void GetMessagesAroundTime_ReturnsExpectedMessages_WhenMessagesWithinWindow()
         {
             // Arrange
