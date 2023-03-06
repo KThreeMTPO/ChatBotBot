@@ -75,7 +75,7 @@ namespace MQTTServer
                 {
                     IBaseMessage ret = CreateMessageForTopic(topic);
                     var messagesInRange = topicData.Where(x => x.Key >= time - _windowSize && x.Key <= time + _windowSize)
-                        .Select(c => c.Value).ToList();
+                        .Select(c => c.Value);
                     if (messagesInRange.Any())
                     {
                         var retType = ret.GetType();
